@@ -1,0 +1,75 @@
+<?php
+
+namespace App\Models;
+
+use App\Enums\UserRole;
+use App\Enums\UserStatus;
+use App\Events\User\UserSaved;
+use App\Models\Traits\CanSearch;
+use App\Models\Traits\UpdateIfDirty;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+
+class User extends Authenticatable
+{
+    use CanSearch;
+    use HasFactory;
+    use Notifiable;
+    use SoftDeletes;
+    use UpdateIfDirty;
+
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'email',
+        'password',
+        'role',
+        'status',
+    ];
+
+    protected $hidden = [
+        'password',
+    ];
+
+    protected function casts(): array
+    {
+        return [
+            'password' => 'hashed',
+            'role' => UserRole::class,
+            'status' => UserStatus::class,
+        ];
+    }
+
+    protected $dispatchesEvents = [
+        'saved' => UserSaved::class,
+    ];
+
+    public function revisions(): HasMany
+    {
+        return $this->hasMany(UserRevision::class);
+    }
+
+    public function passwordResets(): HasMany
+    {
+        return $this->hasMany(PasswordReset::class);
+    }
+
+    public function isAdministrator(): bool
+    {
+        return $this->role === UserRole::Administrator;
+    }
+
+    public function scopeWhereRole(Builder $query, ?string $role): Builder
+    {
+        return $query->when($role, fn ($query) => $query->where('role', $role));
+    }
+
+    public function scopeWhereStatus(Builder $query, ?string $status): Builder
+    {
+        return $query->when($status, fn ($query) => $query->where('status', $status));
+    }
+}
