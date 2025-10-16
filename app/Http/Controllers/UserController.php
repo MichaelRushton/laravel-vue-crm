@@ -35,7 +35,7 @@ class UserController extends Controller
         );
 
         return inertia('Users/Index', [
-            'users' => inertia()->deepMerge($users)->matchOn('data.id'),
+            'users' => inertia()->scroll($users),
             'search' => [
                 'name' => $request->name,
                 'role' => $request->role ?? '',

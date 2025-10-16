@@ -28,7 +28,7 @@ class CustomerController extends Controller
         );
 
         return inertia('Customers/Index', [
-            'customers' => inertia()->deepMerge($customers)->matchOn('data.id'),
+            'customers' => inertia()->scroll($customers),
             'search' => [
                 'name' => $request->name,
             ],

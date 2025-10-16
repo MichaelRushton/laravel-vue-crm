@@ -41,36 +41,44 @@
                 </NeutralButton>
             </div>
         </div>
-        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-            <Card v-for="user in users.data" :key="user.id" class="gap-4 p-4">
-                <div class="flex items-start">
-                    <Link :href="`/users/${user.id}/edit`">
-                        {{ user.first_name }} {{ user.last_name }}
-                    </Link>
-                    <div
-                        v-if="user.can_impersonate"
-                        class="-mt-4 -mr-4 ml-auto cursor-pointer rounded-tr rounded-bl border-b border-l border-neutral-400 p-1.5 text-xs hover:bg-neutral-100"
-                        :title="`Sign in as ${user.first_name} ${user.last_name}`"
-                        @click="impersonate = user"
-                    >
-                        <ArrowRightEndOnRectangleIcon class="size-6" />
+        <div>
+            <InfiniteScroll
+                data="users"
+                class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3"
+            >
+                <Card
+                    v-for="user in users.data"
+                    :key="user.id"
+                    class="gap-4 p-4"
+                >
+                    <div class="flex items-start">
+                        <Link :href="`/users/${user.id}/edit`">
+                            {{ user.first_name }} {{ user.last_name }}
+                        </Link>
+                        <div
+                            v-if="user.can_impersonate"
+                            class="-mt-4 -mr-4 ml-auto cursor-pointer rounded-tr rounded-bl border-b border-l border-neutral-400 p-1.5 text-xs hover:bg-neutral-100"
+                            :title="`Sign in as ${user.first_name} ${user.last_name}`"
+                            @click="impersonate = user"
+                        >
+                            <ArrowRightEndOnRectangleIcon class="size-6" />
+                        </div>
                     </div>
-                </div>
-                <div class="mt-auto flex text-xs">
-                    <div>{{ user.role }}</div>
-                    <div
-                        class="ml-auto"
-                        :class="{
-                            'text-success-600': 'Active' === user.status,
-                            'text-danger-600': 'Inactive' === user.status,
-                        }"
-                    >
-                        {{ user.status }}
+                    <div class="mt-auto flex text-xs">
+                        <div>{{ user.role }}</div>
+                        <div
+                            class="ml-auto"
+                            :class="{
+                                'text-success-600': 'Active' === user.status,
+                                'text-danger-600': 'Inactive' === user.status,
+                            }"
+                        >
+                            {{ user.status }}
+                        </div>
                     </div>
-                </div>
-            </Card>
+                </Card>
+            </InfiniteScroll>
         </div>
-        <InfiniteScroll :data="users" :only="['users']" />
     </div>
     <Modal
         v-if="impersonate"
@@ -96,7 +104,7 @@
 
 <script setup>
 import { ref } from "vue";
-import { Head, useForm } from "@inertiajs/vue3";
+import { Head, InfiniteScroll, useForm } from "@inertiajs/vue3";
 import SuccessLinkButton from "../../Components/Buttons/SuccessLinkButton.vue";
 import {
     ArrowRightEndOnRectangleIcon,
@@ -104,12 +112,10 @@ import {
     PlusIcon,
 } from "@heroicons/vue/24/outline";
 import SuccessNotice from "../../Components/Notices/SuccessNotice.vue";
-import Input from "../../Components/Form/Input.vue";
 import Select from "../../Components/Form/Select.vue";
 import NeutralButton from "../../Components/Buttons/NeutralButton.vue";
 import Card from "../../Components/Card/Card.vue";
 import Link from "../../Components/Text/Link.vue";
-import InfiniteScroll from "../../Components/Search/InfiniteScroll.vue";
 import Modal from "../../Components/Modal/Modal.vue";
 import NeutralLinkButton from "../../Components/Buttons/NeutralLinkButton.vue";
 import PrimaryLinkButton from "../../Components/Buttons/PrimaryLinkButton.vue";
