@@ -20,8 +20,14 @@
             </template>
             <Dropdown class="-top-1 right-2 w-36">
                 <Link
+                    href="/user/edit"
+                    class="rounded-t p-3 hover:bg-neutral-100"
+                >
+                    Update details
+                </Link>
+                <Link
                     href="/sign-out"
-                    class="rounded px-3 py-2 text-left hover:bg-neutral-100"
+                    class="rounded-b p-3 text-left hover:bg-neutral-100"
                     method="delete"
                 >
                     Sign out

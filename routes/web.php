@@ -36,6 +36,10 @@ Route::middleware(['auth', IsUserActive::class])->group(function () {
         Route::delete('/users/impersonate', 'unimpersonate')->name('unimpersonate');
     });
 
-    Route::delete('/sign-out', [AuthController::class, 'destroy'])->name('auth.destroy');
+    Route::controller(AuthController::class)->name('auth.')->group(function () {
+        Route::get('/user/edit', 'edit')->name('edit');
+        Route::patch('/user', 'update')->name('update');
+        Route::delete('/sign-out', 'destroy')->name('destroy');
+    });
 
 });

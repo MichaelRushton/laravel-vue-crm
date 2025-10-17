@@ -112,6 +112,7 @@ import {
     PlusIcon,
 } from "@heroicons/vue/24/outline";
 import SuccessNotice from "../../Components/Notices/SuccessNotice.vue";
+import Search from "../../Components/Form/Search.vue";
 import Select from "../../Components/Form/Select.vue";
 import NeutralButton from "../../Components/Buttons/NeutralButton.vue";
 import Card from "../../Components/Card/Card.vue";
@@ -119,7 +120,6 @@ import Link from "../../Components/Text/Link.vue";
 import Modal from "../../Components/Modal/Modal.vue";
 import NeutralLinkButton from "../../Components/Buttons/NeutralLinkButton.vue";
 import PrimaryLinkButton from "../../Components/Buttons/PrimaryLinkButton.vue";
-import Search from "../../Components/Search/Search.vue";
 
 const props = defineProps({
     users: Object,

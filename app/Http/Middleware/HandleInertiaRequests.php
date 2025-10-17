@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Http\Resources\User\AuthResource;
+use App\Http\Resources\Auth\ShowAuthResource;
 use App\Http\Resources\User\MenuResource;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
@@ -42,7 +42,7 @@ class HandleInertiaRequests extends Middleware
             'app_name' => config('app.name'),
             'flash' => session('flash'),
             ...$request->user() ? [
-                'auth' => new AuthResource($request->user()),
+                'auth' => new ShowAuthResource($request->user()),
                 'menu' => new MenuResource($request->user()),
                 'is_impersonated' => (bool) session('impersonated_by'),
             ] : [],

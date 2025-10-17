@@ -10,14 +10,14 @@
     </Link>
     <template v-else>
         <div
-            class="flex cursor-pointer p-4 hover:bg-neutral-100"
+            class="flex cursor-pointer items-center p-4 hover:bg-neutral-100"
             :class="{ 'border-l-4 border-neutral-400 pl-3': open_submenu }"
             @click="open_submenu = !open_submenu"
         >
             {{ item.label }}
             <span class="ml-auto">
-                <ChevronDownIcon v-if="open_submenu" class="size-6" />
-                <ChevronRightIcon v-else class="size-6" />
+                <ChevronDownIcon v-if="open_submenu" class="size-4" />
+                <ChevronRightIcon v-else class="size-4" />
             </span>
         </div>
         <MenuItem

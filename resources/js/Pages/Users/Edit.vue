@@ -4,7 +4,7 @@
             {{ user ? "Edit" : "Create" }} user - {{ $page.props.app_name }}
         </title>
     </Head>
-    <h1 class="text-xl">{{ user ? "Edit" : "Create" }} User</h1>
+    <h1 class="text-xl">{{ user ? "Edit" : "Create" }} user</h1>
     <form
         @submit.prevent="
             user ? form.patch(`/users/${user.id}`) : form.post('/users')

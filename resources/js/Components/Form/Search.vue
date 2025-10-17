@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import Input from "../Form/Input.vue";
+import Input from "./Input.vue";
 import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
 
 const model = defineModel();
