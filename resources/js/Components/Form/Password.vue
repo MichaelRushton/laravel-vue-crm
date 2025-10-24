@@ -4,6 +4,7 @@
             :type="show ? 'text' : 'password'"
             class="w-full rounded-r-none"
             v-model="model"
+            :required="required || null"
         />
         <div
             class="cursor-pointer rounded-r border-y border-r border-neutral-400 p-2 hover:bg-neutral-100"
@@ -20,6 +21,10 @@
 import { ref } from "vue";
 import Input from "./Input.vue";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/vue/24/solid";
+
+defineProps({
+    required: Boolean,
+});
 
 const model = defineModel();
 

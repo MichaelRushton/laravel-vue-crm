@@ -10,27 +10,29 @@ test('must be authenticated to update customer', function () {
 
 });
 
-test('validates first name', function () {
+test('validates first name', function ($first_name) {
 
     $this->actingAs(User::factory()->create())
         ->patch(route('customers.update', Customer::factory()->create()), [
-            'first_name' => '',
+            'first_name' => $first_name,
         ])
         ->assertRedirectBackWithErrors()
         ->assertInvalid(['first_name']);
 
-});
+})
+    ->with(['', str_repeat('a', 256)]);
 
-test('validates last name', function () {
+test('validates last name', function ($last_name) {
 
     $this->actingAs(User::factory()->create())
         ->patch(route('customers.update', Customer::factory()->create()), [
-            'last_name' => '',
+            'last_name' => $last_name,
         ])
         ->assertRedirectBackWithErrors()
         ->assertInvalid(['last_name']);
 
-});
+})
+    ->with(['', str_repeat('a', 256)]);
 
 test('validates email address', function ($email) {
 
@@ -42,7 +44,7 @@ test('validates email address', function ($email) {
         ->assertInvalid(['email']);
 
 })
-    ->with(['', 'test', 'test@', '@example.com']);
+    ->with(['', 'test', 'test@', '@example.com', str_repeat('a', 244).'@example.com']);
 
 test('email address must be unique', function () {
 

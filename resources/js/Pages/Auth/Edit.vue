@@ -13,21 +13,31 @@
         <Card class="w-full gap-4 p-4 sm:w-96">
             <div class="flex flex-col gap-1">
                 <label for="first_name">First name</label>
-                <Input type="text" id="first_name" v-model="form.first_name" />
+                <Input
+                    type="text"
+                    id="first_name"
+                    v-model="form.first_name"
+                    required
+                />
                 <DangerFeedback v-if="form.errors.first_name">{{
                     form.errors.first_name
                 }}</DangerFeedback>
             </div>
             <div class="flex flex-col gap-1">
                 <label for="last_name">Last name</label>
-                <Input type="text" id="last_name" v-model="form.last_name" />
+                <Input
+                    type="text"
+                    id="last_name"
+                    v-model="form.last_name"
+                    required
+                />
                 <DangerFeedback v-if="form.errors.last_name">{{
                     form.errors.last_name
                 }}</DangerFeedback>
             </div>
             <div class="flex flex-col gap-1">
                 <label for="email">Email address</label>
-                <Input type="email" id="email" v-model="form.email" />
+                <Input type="email" id="email" v-model="form.email" required />
                 <DangerFeedback v-if="form.errors.email">{{
                     form.errors.email
                 }}</DangerFeedback>
@@ -39,7 +49,7 @@
                     form.errors.password
                 }}</DangerFeedback>
                 <Feedback v-else>
-                    The password must be at least
+                    Your password must be at least
                     {{ password_min }} characters.
                 </Feedback>
             </div>

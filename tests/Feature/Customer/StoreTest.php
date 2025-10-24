@@ -29,7 +29,7 @@ test('validates first name', function ($first_name) {
         ->assertInvalid(['first_name']);
 
 })
-    ->with(['']);
+    ->with(['', str_repeat('a', 256)]);
 
 test('requires last name', function () {
 
@@ -50,7 +50,7 @@ test('validates last name', function ($last_name) {
         ->assertInvalid(['last_name']);
 
 })
-    ->with(['']);
+    ->with(['', str_repeat('a', 256)]);
 
 test('requires email address', function () {
 
@@ -71,7 +71,7 @@ test('validates email address', function ($email) {
         ->assertInvalid(['email']);
 
 })
-    ->with(['', 'test', 'test@', '@example.com']);
+    ->with(['', 'test', 'test@', '@example.com', str_repeat('a', 244).'@example.com']);
 
 test('email address must be unique', function () {
 

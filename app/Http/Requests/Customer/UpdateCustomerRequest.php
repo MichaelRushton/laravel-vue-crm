@@ -20,9 +20,9 @@ class UpdateCustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name' => ['sometimes', 'required', 'string'],
-            'last_name' => ['sometimes', 'required', 'string'],
-            'email' => ['sometimes', 'required', 'email', Rule::unique('customers')->ignore($this->route('customer'))],
+            'first_name' => ['sometimes', 'required', 'string', 'max:255'],
+            'last_name' => ['sometimes', 'required', 'string', 'max:255'],
+            'email' => ['sometimes', 'required', 'email', 'max:255', Rule::unique('customers')->ignore($this->route('customer'))],
         ];
     }
 
