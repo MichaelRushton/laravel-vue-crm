@@ -18,6 +18,7 @@
                     id="first_name"
                     v-model="form.first_name"
                     required
+                    maxlength="255"
                 />
                 <DangerFeedback v-if="form.errors.first_name">{{
                     form.errors.first_name
@@ -30,6 +31,7 @@
                     id="last_name"
                     v-model="form.last_name"
                     required
+                    maxlength="255"
                 />
                 <DangerFeedback v-if="form.errors.last_name">{{
                     form.errors.last_name
@@ -37,14 +39,24 @@
             </div>
             <div class="flex flex-col gap-1">
                 <label for="email">Email address</label>
-                <Input type="email" id="email" v-model="form.email" required />
+                <Input
+                    type="email"
+                    id="email"
+                    v-model="form.email"
+                    required
+                    maxlength="255"
+                />
                 <DangerFeedback v-if="form.errors.email">{{
                     form.errors.email
                 }}</DangerFeedback>
             </div>
             <div class="flex flex-col gap-1">
                 <label for="password">Password</label>
-                <Password id="password" v-model="form.password" />
+                <Password
+                    id="password"
+                    v-model="form.password"
+                    :minlength="password_min"
+                />
                 <DangerFeedback v-if="form.errors.password">{{
                     form.errors.password
                 }}</DangerFeedback>
