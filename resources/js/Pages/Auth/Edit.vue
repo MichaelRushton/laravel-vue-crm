@@ -2,7 +2,7 @@
     <Head>
         <title>Update details - {{ $page.props.app_name }}</title>
     </Head>
-    <h1 class="text-xl">Update Details</h1>
+    <h1 class="text-xl">Update details</h1>
     <SuccessNotice
         v-if="flash?.success && !form.processing"
         class="mt-4 sm:w-fit"
