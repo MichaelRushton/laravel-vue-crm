@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Inertia\Testing\AssertableInertia;
 
 test('view sign in page', function () {

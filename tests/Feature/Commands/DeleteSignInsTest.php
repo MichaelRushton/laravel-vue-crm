@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Models\SignIn;
 
 test('deletes sign ins older than 30 days', function () {

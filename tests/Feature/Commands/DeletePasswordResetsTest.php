@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Models\PasswordReset;
 
 test('deletes password resets older than 30 days', function () {

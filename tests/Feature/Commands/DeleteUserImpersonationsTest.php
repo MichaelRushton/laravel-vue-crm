@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Models\UserImpersonation;
 
 test('deletes user impersonations older than 30 days', function () {

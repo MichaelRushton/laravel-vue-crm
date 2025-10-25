@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Models\PasswordReset;
 use App\Services\PasswordService;
 use Illuminate\Support\Facades\Hash;
