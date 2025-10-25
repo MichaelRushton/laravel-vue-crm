@@ -65,12 +65,12 @@ class User extends Authenticatable
         return $this->role === UserRole::Administrator;
     }
 
-    public function scopeWhereRole(Builder $query, ?string $role): Builder
+    public function scopeWhereRole(Builder $query, ?UserRole $role): Builder
     {
         return $query->when($role, fn ($query) => $query->where('role', $role));
     }
 
-    public function scopeWhereStatus(Builder $query, ?string $status): Builder
+    public function scopeWhereStatus(Builder $query, ?UserStatus $status): Builder
     {
         return $query->when($status, fn ($query) => $query->where('status', $status));
     }

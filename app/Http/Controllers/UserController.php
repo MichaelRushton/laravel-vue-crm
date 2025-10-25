@@ -28,8 +28,8 @@ class UserController extends Controller
 
         $users = UserIndexResource::collection(
             User::search($request->name, ['first_name', 'last_name'])
-                ->whereRole($request->role)
-                ->whereStatus($request->status)
+                ->whereRole($role = $request->enum('role', UserRole::class))
+                ->whereStatus($status = $request->enum('status', UserStatus::class))
                 ->orderBy('first_name')
                 ->orderBy('last_name')
                 ->orderBy('id')
@@ -40,8 +40,8 @@ class UserController extends Controller
             'users' => inertia()->scroll($users),
             'search' => [
                 'name' => $request->name,
-                'role' => $request->role ?? '',
-                'status' => $request->status ?? '',
+                'role' => $role?->value ?? '',
+                'status' => $status?->value ?? '',
             ],
             'roles' => UserRole::dropdown(),
             'statuses' => UserStatus::dropdown(),
