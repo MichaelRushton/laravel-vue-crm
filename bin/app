@@ -90,7 +90,7 @@ npm()
 {
     command=$@
     source .env
-    docker run --rm -it -v "$(pwd):/app" -u $(id -u):$(id -g) -w /app -p$NODE_PORT:5173 node:24-alpine sh -c "npm $command"
+    docker run --rm -it -v "$(pwd):/app" -u $(id -u):$(id -g) -w /app -p$NODE_PORT:5173 node:alpine sh -c "npm $command"
 }
 
 exec()
