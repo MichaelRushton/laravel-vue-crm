@@ -1,0 +1,25 @@
+{
+    "$schema": "https://json.schemastore.org/package.json",
+    "name": "@michaelrushton/laravel-vue-crm",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite",
+        "prettier": "prettier . --write"
+    },
+    "dependencies": {
+        "@heroicons/vue": "^2.2.0",
+        "@inertiajs/vue3": "^2.3.12",
+        "@vitejs/plugin-vue": "^6.0.3"
+    },
+    "devDependencies": {
+        "@tailwindcss/vite": "^4.1.18",
+        "laravel-vite-plugin": "^2.1.0",
+        "prettier": "^3.8.1",
+        "prettier-plugin-tailwindcss": "^0.7.2",
+        "tailwindcss": "^4.1.18",
+        "vite": "^7.3.1",
+        "vite-plugin-vue-devtools": "^8.0.5"
+    }
+}
