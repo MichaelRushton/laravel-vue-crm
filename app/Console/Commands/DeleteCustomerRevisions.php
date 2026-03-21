@@ -15,6 +15,10 @@ class DeleteCustomerRevisions extends Command
 
     public function handle()
     {
-        CustomerRevision::where('created_at', '<', $this->option('before') ?: today()->subDays(365))->delete();
+
+        $days = config('data-cleanse.customer_revisions', 365);
+
+        CustomerRevision::where('created_at', '<', $this->option('before') ?: today()->subDays($days))->delete();
+
     }
 }

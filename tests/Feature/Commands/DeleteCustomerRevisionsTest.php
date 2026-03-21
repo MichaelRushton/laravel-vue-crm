@@ -9,7 +9,7 @@ test('deletes customer revisions older than 30 days', function () {
 
     Customer::factory(5)->create();
 
-    $this->travel(366)->days();
+    $this->travel(config('data-cleanse.customer_revisions', 365) + 1)->days();
 
     Customer::factory(10)->create();
 
@@ -24,11 +24,11 @@ test('delete customer revisions before date', function () {
 
     Customer::factory(5)->create();
 
-    $this->travel(61)->days();
+    $this->travel($days = config('data-cleanse.customer_revisions', 365) + 11)->days();
 
     Customer::factory(10)->create();
 
-    $this->artisan('customers:delete-revisions --before="'.today()->subDays(60).'"');
+    $this->artisan('customers:delete-revisions --before="'.today()->subDays($days - 1).'"');
 
     expect(CustomerRevision::count())
         ->toBe(10);

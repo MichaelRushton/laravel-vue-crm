@@ -8,7 +8,7 @@ test('deletes sign ins older than 30 days', function () {
 
     SignIn::factory(5)->create();
 
-    $this->travel(366)->days();
+    $this->travel(config('data-cleanse.sign_ins', 365) + 1)->days();
 
     SignIn::factory(10)->create();
 
@@ -23,11 +23,11 @@ test('delete sign ins before date', function () {
 
     SignIn::factory(5)->create();
 
-    $this->travel(61)->days();
+    $this->travel($days = config('data-cleanse.sign_ins', 365) + 1)->days();
 
     SignIn::factory(10)->create();
 
-    $this->artisan('sign-ins:delete --before="'.today()->subDays(60).'"');
+    $this->artisan('sign-ins:delete --before="'.today()->subDays($days - 1).'"');
 
     expect(SignIn::count())
         ->toBe(10);

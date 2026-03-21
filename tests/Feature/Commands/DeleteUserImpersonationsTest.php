@@ -8,7 +8,7 @@ test('deletes user impersonations older than 30 days', function () {
 
     UserImpersonation::factory(5)->create();
 
-    $this->travel(366)->days();
+    $this->travel(config('data-cleanse.user_impersonations', 365) + 1)->days();
 
     UserImpersonation::factory(10)->create();
 
@@ -23,11 +23,11 @@ test('delete user impersonations before date', function () {
 
     UserImpersonation::factory(5)->create();
 
-    $this->travel(61)->days();
+    $this->travel($days = config('data-cleanse.user_impersonations', 365) + 11)->days();
 
     UserImpersonation::factory(10)->create();
 
-    $this->artisan('users:delete-impersonations --before="'.today()->subDays(60).'"');
+    $this->artisan('users:delete-impersonations --before="'.today()->subDays($days - 1).'"');
 
     expect(UserImpersonation::count())
         ->toBe(10);

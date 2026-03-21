@@ -15,6 +15,10 @@ class DeleteUserRevisions extends Command
 
     public function handle()
     {
-        UserRevision::where('created_at', '<', $this->option('before') ?: today()->subDays(365))->delete();
+
+        $days = config('data-cleanse.user_revisions', 365);
+
+        UserRevision::where('created_at', '<', $this->option('before') ?: today()->subDays($days))->delete();
+
     }
 }

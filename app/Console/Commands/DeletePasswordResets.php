@@ -15,6 +15,10 @@ class DeletePasswordResets extends Command
 
     public function handle()
     {
-        PasswordReset::where('created_at', '<', $this->option('before') ?: today()->subDays(365))->forceDelete();
+
+        $days = config('data-cleanse.password_resets', 365);
+
+        PasswordReset::where('created_at', '<', $this->option('before') ?: today()->subDays($days))->forceDelete();
+
     }
 }

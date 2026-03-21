@@ -8,7 +8,7 @@ test('deletes password resets older than 30 days', function () {
 
     PasswordReset::factory(5)->create();
 
-    $this->travel(366)->days();
+    $this->travel(config('data-cleanse.password_resets', 365) + 1)->days();
 
     PasswordReset::factory(10)->create();
 
@@ -23,11 +23,11 @@ test('delete password resets before date', function () {
 
     PasswordReset::factory(5)->create();
 
-    $this->travel(61)->days();
+    $this->travel($days = config('data-cleanse.password_resets', 365) + 11)->days();
 
     PasswordReset::factory(10)->create();
 
-    $this->artisan('password-resets:delete --before="'.today()->subDays(60).'"');
+    $this->artisan('password-resets:delete --before="'.today()->subDays($days - 1).'"');
 
     expect(PasswordReset::count())
         ->toBe(10);
