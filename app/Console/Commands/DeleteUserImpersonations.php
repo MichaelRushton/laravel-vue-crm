@@ -15,6 +15,6 @@ class DeleteUserImpersonations extends Command
 
     public function handle()
     {
-        UserImpersonation::where('created_at', '<', $this->option('before') ?: today()->subDays(30))->delete();
+        UserImpersonation::where('created_at', '<', $this->option('before') ?: today()->subDays(365))->delete();
     }
 }

@@ -9,7 +9,7 @@ test('deletes customer revisions older than 30 days', function () {
 
     Customer::factory(5)->create();
 
-    $this->travel(31)->days();
+    $this->travel(366)->days();
 
     Customer::factory(10)->create();
 

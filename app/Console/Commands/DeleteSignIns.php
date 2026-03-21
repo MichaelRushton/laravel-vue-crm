@@ -15,6 +15,6 @@ class DeleteSignIns extends Command
 
     public function handle()
     {
-        SignIn::where('created_at', '<', $this->option('before') ?: today()->subDays(30))->delete();
+        SignIn::where('created_at', '<', $this->option('before') ?: today()->subDays(365))->delete();
     }
 }

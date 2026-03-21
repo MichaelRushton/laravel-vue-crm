@@ -9,7 +9,7 @@ test('deletes user revisions older than 30 days', function () {
 
     User::factory(5)->create();
 
-    $this->travel(31)->days();
+    $this->travel(366)->days();
 
     User::factory(10)->create();
 

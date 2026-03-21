@@ -15,6 +15,6 @@ class DeletePasswordResets extends Command
 
     public function handle()
     {
-        PasswordReset::where('created_at', '<', $this->option('before') ?: today()->subDays(30))->forceDelete();
+        PasswordReset::where('created_at', '<', $this->option('before') ?: today()->subDays(365))->forceDelete();
     }
 }

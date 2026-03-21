@@ -8,7 +8,7 @@ test('deletes password resets older than 30 days', function () {
 
     PasswordReset::factory(5)->create();
 
-    $this->travel(31)->days();
+    $this->travel(366)->days();
 
     PasswordReset::factory(10)->create();
 

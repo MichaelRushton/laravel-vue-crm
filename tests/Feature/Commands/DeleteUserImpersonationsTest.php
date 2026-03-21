@@ -8,7 +8,7 @@ test('deletes user impersonations older than 30 days', function () {
 
     UserImpersonation::factory(5)->create();
 
-    $this->travel(31)->days();
+    $this->travel(366)->days();
 
     UserImpersonation::factory(10)->create();
 

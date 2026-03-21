@@ -8,7 +8,7 @@ test('deletes sign ins older than 30 days', function () {
 
     SignIn::factory(5)->create();
 
-    $this->travel(31)->days();
+    $this->travel(366)->days();
 
     SignIn::factory(10)->create();
 

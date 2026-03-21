@@ -15,6 +15,6 @@ class DeleteCustomerRevisions extends Command
 
     public function handle()
     {
-        CustomerRevision::where('created_at', '<', $this->option('before') ?: today()->subDays(30))->delete();
+        CustomerRevision::where('created_at', '<', $this->option('before') ?: today()->subDays(365))->delete();
     }
 }
