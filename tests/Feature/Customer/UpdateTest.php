@@ -12,6 +12,14 @@ test('must be authenticated to update customer', function () {
 
 });
 
+test('must find customer', function () {
+
+    $this->actingAs(User::factory()->create())
+        ->patch(route('customers.update', Customer::factory()->create()->delete()))
+        ->assertNotFound();
+
+});
+
 test('validates first name', function ($first_name) {
 
     $this->actingAs(User::factory()->create())

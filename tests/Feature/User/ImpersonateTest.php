@@ -20,6 +20,14 @@ test('must be an administrator to impersonate user', function () {
 
 });
 
+test('must find user', function () {
+
+    $this->actingAs(User::factory()->administrator()->create())
+        ->post(route('users.impersonate', User::factory()->create()->delete()))
+        ->assertNotFound();
+
+});
+
 test('cannot impersonate self', function () {
 
     $this->actingAs($admin = User::factory()->administrator()->create())

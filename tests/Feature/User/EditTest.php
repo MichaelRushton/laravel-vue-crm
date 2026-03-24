@@ -22,6 +22,14 @@ test('must be an administrator to view edit user page', function () {
 
 });
 
+test('must find user', function () {
+
+    $this->actingAs(User::factory()->administrator()->create())
+        ->get(route('users.edit', User::factory()->create()->delete()))
+        ->assertNotFound();
+
+});
+
 test('view edit user page', function () {
 
     $this->actingAs($user = User::factory()->administrator()->create())

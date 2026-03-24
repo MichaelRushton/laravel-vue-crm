@@ -13,6 +13,14 @@ test('must be signed in to view edit customer page', function () {
 
 });
 
+test('must find customer', function () {
+
+    $this->actingAs(User::factory()->create())
+        ->get(route('customers.edit', Customer::factory()->create()->delete()))
+        ->assertNotFound();
+
+});
+
 test('view edit customer page', function () {
 
     $this->actingAs(User::factory()->create())

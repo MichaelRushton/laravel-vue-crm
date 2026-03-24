@@ -23,6 +23,14 @@ test('must be an administrator to update user', function () {
 
 });
 
+test('must find user', function () {
+
+    $this->actingAs(User::factory()->administrator()->create())
+        ->patch(route('users.update', User::factory()->create()->delete()))
+        ->assertNotFound();
+
+});
+
 test('validates first name', function ($first_name) {
 
     $this->actingAs($user = User::factory()->administrator()->create())
