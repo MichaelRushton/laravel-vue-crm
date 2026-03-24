@@ -87,7 +87,7 @@ class UserController extends Controller
 
     }
 
-    public function update(User $user, UpdateUserRequest $request): RedirectResponse
+    public function update(UpdateUserRequest $request, User $user): RedirectResponse
     {
 
         $user->updateIfDirty($request->validated());
@@ -98,7 +98,7 @@ class UserController extends Controller
 
     }
 
-    public function impersonate(User $user, Request $request): RedirectResponse
+    public function impersonate(Request $request, User $user): RedirectResponse
     {
 
         Gate::authorize('impersonate', $user);

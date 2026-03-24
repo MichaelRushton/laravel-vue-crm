@@ -44,10 +44,10 @@ class ResetPasswordController extends Controller
 
     }
 
-    public function show(PasswordReset $reset_password, Request $request): InertiaResponse
+    public function show(Request $request, PasswordReset $reset_password): InertiaResponse
     {
 
-        $this->auth($reset_password, $request);
+        $this->auth($request, $reset_password);
 
         return inertia('PasswordReset/Show', [
             'uuid' => $reset_password->id,
@@ -57,10 +57,10 @@ class ResetPasswordController extends Controller
 
     }
 
-    public function update(PasswordReset $reset_password, UpdatePasswordResetRequest $request)
+    public function update(UpdatePasswordResetRequest $request, PasswordReset $reset_password)
     {
 
-        $this->auth($reset_password, $request);
+        $this->auth($request, $reset_password);
 
         $reset_password->user->update([
             'password' => $request->validated('password'),
@@ -78,7 +78,7 @@ class ResetPasswordController extends Controller
 
     }
 
-    protected function auth(PasswordReset $password_reset, Request $request): void
+    protected function auth(Request $request, PasswordReset $password_reset): void
     {
 
         if (! Hash::check($request->token, $password_reset->token)) {

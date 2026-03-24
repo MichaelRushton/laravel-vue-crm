@@ -69,7 +69,7 @@ class CustomerController extends Controller
 
     }
 
-    public function update(Customer $customer, UpdateCustomerRequest $request): RedirectResponse
+    public function update(UpdateCustomerRequest $request, Customer $customer): RedirectResponse
     {
 
         $customer->updateIfDirty($request->validated());
