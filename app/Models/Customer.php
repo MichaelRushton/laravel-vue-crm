@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Events\Customer\CustomerSaved;
+use App\Events\Customer\CustomerTrashed;
 use App\Models\Traits\CanSearch;
 use App\Models\Traits\UpdateIfDirty;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -28,6 +29,7 @@ class Customer extends Model
 
     protected $dispatchesEvents = [
         'saved' => CustomerSaved::class,
+        'trashed' => CustomerTrashed::class,
     ];
 
     protected static function booted(): void

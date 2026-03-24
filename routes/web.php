@@ -26,7 +26,7 @@ Route::middleware(['auth', IsUserActive::class])->group(function () {
     Route::get('/', [DashboardController::class, 'show'])->name('dashboard.show');
 
     Route::resource('customers', CustomerController::class)
-        ->except(['show', 'destroy'])
+        ->except(['show'])
         ->whereUuid('customer');
 
     Route::resource('users', UserController::class)

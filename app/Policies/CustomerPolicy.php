@@ -23,4 +23,9 @@ class CustomerPolicy
     {
         return true;
     }
+
+    public function delete(User $user, Customer $customer): bool
+    {
+        return true;
+    }
 }

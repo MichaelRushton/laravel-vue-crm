@@ -79,4 +79,17 @@ class CustomerController extends Controller
         ]);
 
     }
+
+    public function destroy(Customer $customer): RedirectResponse
+    {
+
+        Gate::authorize('delete', $customer);
+
+        $customer->delete();
+
+        return to_route('customers.index')->withFlash([
+            'success' => 'The customer has been scheduled for deletion.',
+        ]);
+
+    }
 }

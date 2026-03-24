@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Listeners\Customer;
 
 use App\Events\Customer\CustomerSaved;
+use App\Events\Customer\CustomerTrashed;
 use App\Models\CustomerRevision;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,7 +13,7 @@ class SaveCustomerRevision
 {
     public function __construct() {}
 
-    public function handle(CustomerSaved $event): void
+    public function handle(CustomerSaved|CustomerTrashed $event): void
     {
 
         $attributes = $event->customer->refresh()->getAttributes();
