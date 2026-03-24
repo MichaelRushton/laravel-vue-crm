@@ -20,7 +20,7 @@
             <div class="flex">
                 <InputPrepend>Role</InputPrepend>
                 <Select
-                    class="flex-grow rounded-l-none"
+                    class="grow rounded-l-none"
                     @change="search"
                     v-model="form.role"
                     :options="roles"
@@ -31,7 +31,7 @@
             <div class="flex">
                 <InputPrepend>Status</InputPrepend>
                 <Select
-                    class="flex-grow rounded-l-none"
+                    class="grow rounded-l-none"
                     @change="search"
                     v-model="form.status"
                     :options="statuses"
@@ -80,26 +80,7 @@
             </InfiniteScroll>
         </div>
     </div>
-    <Modal
-        v-if="impersonate"
-        @close-modal="impersonate = null"
-        class="gap-4 p-4"
-    >
-        <div>
-            Sign in as {{ impersonate.first_name }} {{ impersonate.last_name }}?
-        </div>
-        <div class="grid grid-cols-2 gap-4 sm:flex">
-            <NeutralLinkButton @click="impersonate = null" class="sm:ml-auto">
-                No
-            </NeutralLinkButton>
-            <PrimaryLinkButton
-                :href="`/users/${impersonate.uuid}/impersonate`"
-                method="post"
-            >
-                Yes
-            </PrimaryLinkButton>
-        </div>
-    </Modal>
+    <Impersonate v-model="impersonate" />
 </template>
 
 <script setup>
@@ -108,20 +89,16 @@ import { Head, InfiniteScroll, useForm } from "@inertiajs/vue3";
 import SuccessLinkButton from "../../Components/Buttons/SuccessLinkButton.vue";
 import {
     ArrowRightEndOnRectangleIcon,
-    BackspaceIcon,
     PlusIcon,
 } from "@heroicons/vue/24/outline";
 import SuccessNotice from "../../Components/Notices/SuccessNotice.vue";
 import Search from "../../Components/Form/Search.vue";
 import Select from "../../Components/Form/Select.vue";
-import NeutralButton from "../../Components/Buttons/NeutralButton.vue";
 import Card from "../../Components/Card/Card.vue";
 import Link from "../../Components/Text/Link.vue";
-import Modal from "../../Components/Modal/Modal.vue";
-import NeutralLinkButton from "../../Components/Buttons/NeutralLinkButton.vue";
-import PrimaryLinkButton from "../../Components/Buttons/PrimaryLinkButton.vue";
 import InputPrepend from "../../Components/Form/Input/InputPrepend.vue";
 import ResetButton from "../../Components/Buttons/ResetButton.vue";
+import Impersonate from "./Impersonate.vue";
 
 const props = defineProps({
     users: Object,
