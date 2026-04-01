@@ -26,12 +26,12 @@
 
 <script setup>
 import { Head, useForm } from "@inertiajs/vue3";
-import CenterScreen from "../../Layouts/CenterScreen.vue";
-import Card from "../../Components/Card/Card.vue";
-import Password from "../../Components/Form/Password.vue";
-import DangerFeedback from "../../Components/Feedback/DangerFeedback.vue";
-import Feedback from "../../Components/Feedback/Feedback.vue";
-import PrimaryButton from "../../Components/Buttons/PrimaryButton.vue";
+import CenterScreen from "@/Layouts/CenterScreen.vue";
+import Card from "@/Components/Card/Card.vue";
+import Password from "@/Components/Form/Password.vue";
+import DangerFeedback from "@/Components/Feedback/DangerFeedback.vue";
+import Feedback from "@/Components/Feedback/Feedback.vue";
+import PrimaryButton from "@/Components/Buttons/PrimaryButton.vue";
 
 const props = defineProps({
     uuid: String,

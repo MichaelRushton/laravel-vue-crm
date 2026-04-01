@@ -78,13 +78,13 @@
 
 <script setup>
 import { Head, useForm } from "@inertiajs/vue3";
-import SuccessNotice from "../../Components/Notices/SuccessNotice.vue";
-import Card from "../../Components/Card/Card.vue";
-import Input from "../../Components/Form/Input.vue";
-import DangerFeedback from "../../Components/Feedback/DangerFeedback.vue";
-import Password from "../../Components/Form/Password.vue";
-import Feedback from "../../Components/Feedback/Feedback.vue";
-import PrimaryButton from "../../Components/Buttons/PrimaryButton.vue";
+import SuccessNotice from "@/Components/Notices/SuccessNotice.vue";
+import Card from "@/Components/Card/Card.vue";
+import Input from "@/Components/Form/Input.vue";
+import DangerFeedback from "@/Components/Feedback/DangerFeedback.vue";
+import Password from "@/Components/Form/Password.vue";
+import Feedback from "@/Components/Feedback/Feedback.vue";
+import PrimaryButton from "@/Components/Buttons/PrimaryButton.vue";
 
 const props = defineProps({
     user: Object,

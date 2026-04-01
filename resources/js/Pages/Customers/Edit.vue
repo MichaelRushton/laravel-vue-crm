@@ -70,11 +70,11 @@
 
 <script setup>
 import { Head, useForm } from "@inertiajs/vue3";
-import Card from "../../Components/Card/Card.vue";
-import Input from "../../Components/Form/Input.vue";
-import DangerFeedback from "../../Components/Feedback/DangerFeedback.vue";
-import NeutralLinkButton from "../../Components/Buttons/NeutralLinkButton.vue";
-import PrimaryButton from "../../Components/Buttons/PrimaryButton.vue";
+import Card from "@/Components/Card/Card.vue";
+import Input from "@/Components/Form/Input.vue";
+import DangerFeedback from "@/Components/Feedback/DangerFeedback.vue";
+import NeutralLinkButton from "@/Components/Buttons/NeutralLinkButton.vue";
+import PrimaryButton from "@/Components/Buttons/PrimaryButton.vue";
 
 const props = defineProps({
     customer: Object,
