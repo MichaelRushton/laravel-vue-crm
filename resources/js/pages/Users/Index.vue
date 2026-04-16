@@ -86,18 +86,18 @@
 <script setup>
 import { ref } from "vue";
 import { Head, InfiniteScroll, useForm } from "@inertiajs/vue3";
-import SuccessLinkButton from "@/Components/Buttons/SuccessLinkButton.vue";
+import SuccessLinkButton from "@/components/Buttons/SuccessLinkButton.vue";
 import {
     ArrowRightEndOnRectangleIcon,
     PlusIcon,
 } from "@heroicons/vue/24/outline";
-import SuccessNotice from "@/Components/Notices/SuccessNotice.vue";
-import Search from "@/Components/Form/Search.vue";
-import Select from "@/Components/Form/Select.vue";
-import Card from "@/Components/Card/Card.vue";
-import Link from "@/Components/Text/Link.vue";
-import InputPrepend from "@/Components/Form/Input/InputPrepend.vue";
-import ResetButton from "@/Components/Buttons/ResetButton.vue";
+import SuccessNotice from "@/components/Notices/SuccessNotice.vue";
+import Search from "@/components/Form/Search.vue";
+import Select from "@/components/Form/Select.vue";
+import Card from "@/components/Card/Card.vue";
+import Link from "@/components/Text/Link.vue";
+import InputPrepend from "@/components/Form/Input/InputPrepend.vue";
+import ResetButton from "@/components/Buttons/ResetButton.vue";
 import Impersonate from "./Impersonate.vue";
 
 const props = defineProps({

@@ -41,15 +41,15 @@
 
 <script setup>
 import { Head, useForm } from "@inertiajs/vue3";
-import CenterScreen from "@/Layouts/CenterScreen.vue";
-import SuccessNotice from "@/Components/Notices/SuccessNotice.vue";
-import DangerNotice from "@/Components/Notices/DangerNotice.vue";
-import Card from "@/Components/Card/Card.vue";
-import Input from "@/Components/Form/Input.vue";
-import DangerFeedback from "@/Components/Feedback/DangerFeedback.vue";
-import Link from "@/Components/Text/Link.vue";
-import Password from "@/Components/Form/Password.vue";
-import PrimaryButton from "@/Components/Buttons/PrimaryButton.vue";
+import CenterScreen from "@/layouts/CenterScreen.vue";
+import SuccessNotice from "@/components/Notices/SuccessNotice.vue";
+import DangerNotice from "@/components/Notices/DangerNotice.vue";
+import Card from "@/components/Card/Card.vue";
+import Input from "@/components/Form/Input.vue";
+import DangerFeedback from "@/components/Feedback/DangerFeedback.vue";
+import Link from "@/components/Text/Link.vue";
+import Password from "@/components/Form/Password.vue";
+import PrimaryButton from "@/components/Buttons/PrimaryButton.vue";
 
 defineProps({
     flash: Object,

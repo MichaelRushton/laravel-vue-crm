@@ -28,12 +28,12 @@
 
 <script setup>
 import { Head, useForm } from "@inertiajs/vue3";
-import CenterScreen from "@/Layouts/CenterScreen.vue";
-import Card from "@/Components/Card/Card.vue";
-import Input from "@/Components/Form/Input.vue";
-import DangerFeedback from "@/Components/Feedback/DangerFeedback.vue";
-import NeutralLinkButton from "@/Components/Buttons/NeutralLinkButton.vue";
-import PrimaryButton from "@/Components/Buttons/PrimaryButton.vue";
+import CenterScreen from "@/layouts/CenterScreen.vue";
+import Card from "@/components/Card/Card.vue";
+import Input from "@/components/Form/Input.vue";
+import DangerFeedback from "@/components/Feedback/DangerFeedback.vue";
+import NeutralLinkButton from "@/components/Buttons/NeutralLinkButton.vue";
+import PrimaryButton from "@/components/Buttons/PrimaryButton.vue";
 
 const form = useForm({
     email: null,

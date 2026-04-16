@@ -1,4 +1,4 @@
-resources/js/Components/Buttons/PrimaryLinkButton.vue
+resources/js/components/Buttons/PrimaryLinkButton.vue
 <template>
     <LinkButton class="bg-success-500 hover:bg-success-600! text-white">
         <slot />

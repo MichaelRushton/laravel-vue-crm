@@ -22,9 +22,9 @@
 </template>
 
 <script setup>
-import Modal from "@/Components/Modal/Modal.vue";
-import NeutralLinkButton from "@/Components/Buttons/NeutralLinkButton.vue";
-import PrimaryLinkButton from "@/Components/Buttons/PrimaryLinkButton.vue";
+import Modal from "@/components/Modal/Modal.vue";
+import NeutralLinkButton from "@/components/Buttons/NeutralLinkButton.vue";
+import PrimaryLinkButton from "@/components/Buttons/PrimaryLinkButton.vue";
 
 const impersonate = defineModel();
 </script>

@@ -107,14 +107,14 @@
 
 <script setup>
 import { Head, useForm } from "@inertiajs/vue3";
-import Card from "@/Components/Card/Card.vue";
-import Input from "@/Components/Form/Input.vue";
-import DangerFeedback from "@/Components/Feedback/DangerFeedback.vue";
-import Password from "@/Components/Form/Password.vue";
-import Feedback from "@/Components/Feedback/Feedback.vue";
-import NeutralLinkButton from "@/Components/Buttons/NeutralLinkButton.vue";
-import PrimaryButton from "@/Components/Buttons/PrimaryButton.vue";
-import Select from "@/Components/Form/Select.vue";
+import Card from "@/components/Card/Card.vue";
+import Input from "@/components/Form/Input.vue";
+import DangerFeedback from "@/components/Feedback/DangerFeedback.vue";
+import Password from "@/components/Form/Password.vue";
+import Feedback from "@/components/Feedback/Feedback.vue";
+import NeutralLinkButton from "@/components/Buttons/NeutralLinkButton.vue";
+import PrimaryButton from "@/components/Buttons/PrimaryButton.vue";
+import Select from "@/components/Form/Select.vue";
 
 const props = defineProps({
     user: Object,

@@ -56,13 +56,13 @@
 <script setup>
 import { ref } from "vue";
 import { Head, InfiniteScroll, useForm, useHttp } from "@inertiajs/vue3";
-import SuccessLinkButton from "@/Components/Buttons/SuccessLinkButton.vue";
+import SuccessLinkButton from "@/components/Buttons/SuccessLinkButton.vue";
 import { EyeIcon, PencilIcon, PlusIcon } from "@heroicons/vue/24/outline";
-import SuccessNotice from "@/Components/Notices/SuccessNotice.vue";
-import Search from "@/Components/Form/Search.vue";
-import Card from "@/Components/Card/Card.vue";
-import Link from "@/Components/Text/Link.vue";
-import ResetButton from "@/Components/Buttons/ResetButton.vue";
+import SuccessNotice from "@/components/Notices/SuccessNotice.vue";
+import Search from "@/components/Form/Search.vue";
+import Card from "@/components/Card/Card.vue";
+import Link from "@/components/Text/Link.vue";
+import ResetButton from "@/components/Buttons/ResetButton.vue";
 import Show from "./Show.vue";
 
 const props = defineProps({

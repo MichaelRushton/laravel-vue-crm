@@ -17,8 +17,8 @@
 </template>
 
 <script setup>
-import SuccessLinkButton from "@/Components/Buttons/SuccessLinkButton.vue";
-import Modal from "@/Components/Modal/Modal.vue";
+import SuccessLinkButton from "@/components/Buttons/SuccessLinkButton.vue";
+import Modal from "@/components/Modal/Modal.vue";
 import { XMarkIcon } from "@heroicons/vue/24/outline";
 
 const customer = defineModel();

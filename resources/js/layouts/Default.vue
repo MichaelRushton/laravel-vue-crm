@@ -74,10 +74,10 @@ import {
     UserCircleIcon,
     XMarkIcon,
 } from "@heroicons/vue/24/outline";
-import DropdownContainer from "../Components/Dropdown/DropdownContainer.vue";
-import Dropdown from "../Components/Dropdown/Dropdown.vue";
-import Link from "../Components/Text/Link.vue";
-import MenuItem from "../Components/Menu/MenuItem.vue";
+import DropdownContainer from "../components/Dropdown/DropdownContainer.vue";
+import Dropdown from "../components/Dropdown/Dropdown.vue";
+import Link from "../components/Text/Link.vue";
+import MenuItem from "../components/Menu/MenuItem.vue";
 
 defineProps({
     auth: Object,
