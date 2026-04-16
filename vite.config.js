@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
 import vue from "@vitejs/plugin-vue";
+import inertia from "@inertiajs/vite";
 import tailwindcss from "@tailwindcss/vite";
 import vueDevTools from "vite-plugin-vue-devtools";
 
@@ -11,6 +12,7 @@ export default defineConfig({
             refresh: true,
         }),
         vue(),
+        inertia(),
         tailwindcss(),
         vueDevTools(),
     ],

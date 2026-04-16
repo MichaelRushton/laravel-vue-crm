@@ -7,7 +7,9 @@
           content="width=device-width, initial-scale=1"
         >
         @vite('resources/js/app.js')
-        @inertiaHead
+        <x-inertia::head />
     </head>
-    <body>@inertia</body>
+    <body>
+        <x-inertia::app />
+    </body>
 </html>
