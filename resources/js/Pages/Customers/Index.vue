@@ -26,26 +26,44 @@
                     :key="customer.uuid"
                     class="gap-4 p-4"
                 >
-                    <div>
-                        <Link :href="`/customers/${customer.uuid}/edit`">
+                    <div class="flex flex-col gap-4 sm:flex-row">
+                        <div>
                             {{ customer.first_name }} {{ customer.last_name }}
-                        </Link>
+                        </div>
+                        <div class="flex items-center gap-4 md:ml-auto">
+                            <div
+                                @click="show(customer.uuid)"
+                                class="cursor-pointer"
+                                title="View"
+                            >
+                                <EyeIcon class="size-3" />
+                            </div>
+                            <Link
+                                :href="`/customers/${customer.uuid}/edit`"
+                                title="Edit"
+                            >
+                                <PencilIcon class="size-3" />
+                            </Link>
+                        </div>
                     </div>
                 </Card>
             </InfiniteScroll>
         </div>
     </div>
+    <Show v-model="customer" />
 </template>
 
 <script setup>
-import { Head, InfiniteScroll, useForm } from "@inertiajs/vue3";
+import { ref } from "vue";
+import { Head, InfiniteScroll, useForm, useHttp } from "@inertiajs/vue3";
 import SuccessLinkButton from "@/Components/Buttons/SuccessLinkButton.vue";
-import { PlusIcon } from "@heroicons/vue/24/outline";
+import { EyeIcon, PencilIcon, PlusIcon } from "@heroicons/vue/24/outline";
 import SuccessNotice from "@/Components/Notices/SuccessNotice.vue";
 import Search from "@/Components/Form/Search.vue";
 import Card from "@/Components/Card/Card.vue";
 import Link from "@/Components/Text/Link.vue";
 import ResetButton from "@/Components/Buttons/ResetButton.vue";
+import Show from "./Show.vue";
 
 const props = defineProps({
     customers: Object,
@@ -67,5 +85,17 @@ const search = () => {
 const reset = () => {
     form.name = "";
     search();
+};
+
+const customer = ref(null);
+
+const http = useHttp();
+
+const show = (customer_id) => {
+    http.get(`/customers/${customer_id}`, {
+        onSuccess: (response) => {
+            customer.value = response.customer;
+        },
+    });
 };
 </script>

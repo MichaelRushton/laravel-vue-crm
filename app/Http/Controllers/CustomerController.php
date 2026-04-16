@@ -8,7 +8,9 @@ use App\Http\Requests\Customer\StoreCustomerRequest;
 use App\Http\Requests\Customer\UpdateCustomerRequest;
 use App\Http\Resources\Customer\CustomerIndexResource;
 use App\Http\Resources\Customer\EditCustomerResource;
+use App\Http\Resources\Customer\ShowCustomerResource;
 use App\Models\Customer;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -54,6 +56,17 @@ class CustomerController extends Controller
 
         return to_route('customers.index')->withFlash([
             'success' => 'The customer has been created.',
+        ]);
+
+    }
+
+    public function show(Customer $customer): JsonResponse
+    {
+
+        Gate::authorize('view', $customer);
+
+        return response()->json([
+            'customer' => new ShowCustomerResource($customer),
         ]);
 
     }
