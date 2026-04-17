@@ -8,7 +8,12 @@
             <h1 class="text-center text-xl">Reset password</h1>
             <div class="flex flex-col gap-1">
                 <label for="password">Password</label>
-                <Password id="password" v-model="form.password" />
+                <Password
+                    id="password"
+                    v-model="form.password"
+                    required
+                    :minlength="password_min"
+                />
                 <DangerFeedback v-if="form.errors.password">{{
                     form.errors.password
                 }}</DangerFeedback>
