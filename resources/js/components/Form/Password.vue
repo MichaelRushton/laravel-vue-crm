@@ -2,6 +2,7 @@
     <div class="flex">
         <Input
             :type="show ? 'text' : 'password'"
+            :id
             class="w-full rounded-r-none"
             v-model="model"
             :required
@@ -25,6 +26,7 @@ import { EyeIcon, EyeSlashIcon } from "@heroicons/vue/24/solid";
 import InputAppend from "./Input/InputAppend.vue";
 
 defineProps({
+    id: String,
     required: Boolean,
     minlength: Number,
 });
