@@ -12,7 +12,9 @@ export default defineConfig({
             refresh: true,
         }),
         vue(),
-        inertia(),
+        inertia({
+            ssr: false,
+        }),
         tailwindcss(),
         vueDevTools(),
     ],
