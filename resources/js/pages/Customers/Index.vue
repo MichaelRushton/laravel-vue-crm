@@ -77,6 +77,8 @@ const form = useForm({
 
 const search = () => {
     form.get("/customers", {
+        only: ["customers", "search"],
+        reset: ["customers"],
         preserveState: true,
         replace: true,
     });

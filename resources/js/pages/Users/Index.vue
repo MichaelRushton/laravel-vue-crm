@@ -116,13 +116,16 @@ const form = useForm({
 
 const search = () => {
     form.get("/users", {
+        only: ["users", "search"],
+        reset: ["users"],
         preserveState: true,
         replace: true,
     });
 };
 
 const reset = () => {
-    form.name = form.role = form.status = "";
+    form.name = form.role = "";
+    form.status = "active";
     search();
 };
 
