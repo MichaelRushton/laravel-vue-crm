@@ -4,6 +4,9 @@
         @close-modal="impersonate = null"
         class="gap-4 p-4"
     >
+        <template #header>
+            <b>Confirm</b>
+        </template>
         <div>
             Sign in as {{ impersonate.first_name }} {{ impersonate.last_name }}?
         </div>

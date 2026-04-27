@@ -96,11 +96,10 @@ import SuccessNotice from "@/components/Notices/SuccessNotice.vue";
 import Search from "@/components/Form/Search.vue";
 import Select from "@/components/Form/Select.vue";
 import Card from "@/components/Card/Card.vue";
-import Link from "@/components/Text/Link.vue";
 import InputPrepend from "@/components/Form/Input/InputPrepend.vue";
 import ResetButton from "@/components/Buttons/ResetButton.vue";
-import Impersonate from "./Impersonate.vue";
 import Show from "./Show.vue";
+import Impersonate from "./Impersonate.vue";
 
 const props = defineProps({
     users: Object,
