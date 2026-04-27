@@ -21,14 +21,12 @@ class MenuResource implements JsonSerializable
         return match ($this->user->role) {
             UserRole::Administrator => [
                 MenuItem::Dashboard,
-                MenuItem::Customers,
                 'Administration' => [
                     MenuItem::Users,
                 ],
             ],
             default => [
                 MenuItem::Dashboard,
-                MenuItem::Customers,
             ]
         };
 

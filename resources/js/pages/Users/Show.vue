@@ -1,15 +1,17 @@
 <template>
-    <Modal v-if="customer" @close-modal="customer = null" class="gap-4 p-4">
+    <Modal v-if="user" @close-modal="user = null" class="gap-4 p-4">
         <div class="flex">
-            <b>{{ customer.first_name }} {{ customer.last_name }}</b>
+            <b>{{ user.first_name }} {{ user.last_name }}</b>
             <XMarkIcon
                 class="ml-auto size-6 cursor-pointer"
-                @click="customer = null"
+                @click="user = null"
             />
         </div>
-        <div>{{ customer.email }}</div>
+        <div>{{ user.email }}</div>
+        <div>{{ user.role }}</div>
+        <div>{{ user.status }}</div>
         <div class="flex justify-end">
-            <SuccessLinkButton :href="`/customers/${customer.uuid}/edit`">
+            <SuccessLinkButton :href="`/users/${user.uuid}/edit`">
                 Edit
             </SuccessLinkButton>
         </div>
@@ -21,5 +23,5 @@ import SuccessLinkButton from "@/components/Buttons/SuccessLinkButton.vue";
 import Modal from "@/components/Modal/Modal.vue";
 import { XMarkIcon } from "@heroicons/vue/24/outline";
 
-const customer = defineModel();
+const user = defineModel();
 </script>

@@ -13,6 +13,11 @@ class UserPolicy
         return $user->isAdministrator();
     }
 
+    public function view(User $user): bool
+    {
+        return $user->isAdministrator();
+    }
+
     public function create(User $user): bool
     {
         return $user->isAdministrator();

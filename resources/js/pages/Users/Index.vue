@@ -52,9 +52,9 @@
                     class="gap-4 p-4"
                 >
                     <div class="flex items-start">
-                        <Link :href="`/users/${user.uuid}/edit`">
+                        <div @click="show(user.uuid)" class="cursor-pointer">
                             {{ user.first_name }} {{ user.last_name }}
-                        </Link>
+                        </div>
                         <div
                             v-if="user.can_impersonate"
                             class="border-neutral-default -mt-4 -mr-4 ml-auto cursor-pointer rounded-tr rounded-bl border-b border-l p-1.5 text-xs hover:bg-neutral-100"
@@ -80,12 +80,13 @@
             </InfiniteScroll>
         </div>
     </div>
+    <Show v-model="user" />
     <Impersonate v-model="impersonate" />
 </template>
 
 <script setup>
 import { ref } from "vue";
-import { Head, InfiniteScroll, useForm } from "@inertiajs/vue3";
+import { Head, InfiniteScroll, useForm, useHttp } from "@inertiajs/vue3";
 import SuccessLinkButton from "@/components/Buttons/SuccessLinkButton.vue";
 import {
     ArrowRightEndOnRectangleIcon,
@@ -99,6 +100,7 @@ import Link from "@/components/Text/Link.vue";
 import InputPrepend from "@/components/Form/Input/InputPrepend.vue";
 import ResetButton from "@/components/Buttons/ResetButton.vue";
 import Impersonate from "./Impersonate.vue";
+import Show from "./Show.vue";
 
 const props = defineProps({
     users: Object,
@@ -127,6 +129,18 @@ const reset = () => {
     form.name = form.role = "";
     form.status = "active";
     search();
+};
+
+const user = ref(null);
+
+const http = useHttp();
+
+const show = (user_id) => {
+    http.get(`/users/${user_id}`, {
+        onSuccess: (response) => {
+            user.value = response;
+        },
+    });
 };
 
 const impersonate = ref(null);

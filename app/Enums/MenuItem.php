@@ -7,7 +7,6 @@ namespace App\Enums;
 enum MenuItem
 {
     case Dashboard;
-    case Customers;
     case Users;
 
     public function href(): string

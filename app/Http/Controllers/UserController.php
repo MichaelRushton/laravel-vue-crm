@@ -10,6 +10,7 @@ use App\Events\User\UserImpersonated;
 use App\Http\Requests\User\StoreUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
 use App\Http\Resources\User\EditUserResource;
+use App\Http\Resources\User\ShowUserResource;
 use App\Http\Resources\User\UserIndexResource;
 use App\Models\User;
 use App\Services\PasswordService;
@@ -70,6 +71,15 @@ class UserController extends Controller
         return to_route('users.index')->withFlash([
             'success' => 'The user has been created.',
         ]);
+
+    }
+
+    public function show(User $user): ShowUserResource
+    {
+
+        Gate::authorize('view', $user);
+
+        return new ShowUserResource($user);
 
     }
 

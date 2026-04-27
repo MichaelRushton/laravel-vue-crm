@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\UserController;
@@ -25,11 +24,8 @@ Route::middleware(['auth', IsUserActive::class])->group(function () {
 
     Route::get('/', [DashboardController::class, 'show'])->name('dashboard.show');
 
-    Route::resource('customers', CustomerController::class)
-        ->whereUuid('customer');
-
     Route::resource('users', UserController::class)
-        ->except(['show', 'destroy'])
+        ->except(['destroy'])
         ->whereUuid('user');
 
     Route::controller(UserController::class)->name('users.')->group(function () {

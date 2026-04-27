@@ -8,4 +8,3 @@ Schedule::command('users:delete-revisions')->daily();
 Schedule::command('users:delete-impersonations')->daily();
 Schedule::command('sign-ins:delete')->daily();
 Schedule::command('password-resets:delete')->daily();
-Schedule::command('customers:delete-revisions')->daily();
