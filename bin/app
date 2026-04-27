@@ -44,7 +44,7 @@ install()
 
     export uid=$(id -u)
     export gid=$(id -g)
-    docker compose -f docker/docker-compose.yml --env-file .env --profile install up -d
+    docker compose -f docker/compose.yaml --env-file .env --profile install up -d
 
     exec composer install
     exec php artisan key:generate
@@ -72,12 +72,12 @@ start()
     export uid=$(id -u)
     export gid=$(id -g)
     command=$@
-    docker compose -f docker/docker-compose.yml --env-file .env --profile "*" up -d $command
+    docker compose -f docker/compose.yaml --env-file .env --profile "*" up -d $command
 }
 
 stop()
 {
-    docker compose -f docker/docker-compose.yml --env-file .env --profile "*" stop
+    docker compose -f docker/compose.yaml --env-file .env --profile "*" stop
 }
 
 dev()
