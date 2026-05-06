@@ -46,21 +46,21 @@ install()
     export gid=$(id -g)
     docker compose -f docker/compose.yaml --env-file .env --profile install up --build -d
 
-    exec composer i
-    exec php artisan key:generate
-    exec npm i
-    exec npm run build
+    app_exec composer i
+    app_exec php artisan key:generate
+    app_exec npm i
+    app_exec npm run build
 
     until [ "`docker inspect -f {{.State.Health.Status}} laravel-vue-app-db`" == "healthy" ]; do
         sleep 1;
     done;
 
-    exec php artisan migrate:fresh
+    app_exec php artisan migrate:fresh
 
     read -p $'Would you like to seed the database? y/N' -n 1 -r
 
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-        exec php artisan db:seed
+        app_exec php artisan db:seed
     fi
 
     start
@@ -82,17 +82,17 @@ stop()
 
 dev()
 {
-    exec php artisan optimize:clear
-    exec NODE_ENV=development npm run dev
+    app_exec php artisan optimize:clear
+    app_exec NODE_ENV=development npm run dev
 }
 
 format()
 {
-    exec npm run prettier
-    exec php vendor/bin/pint
+    app_exec npm run prettier
+    app_exec php vendor/bin/pint
 }
 
-exec()
+app_exec()
 {
     command=$@
     docker exec -it laravel-vue-app-app sh -c "$command"
@@ -118,18 +118,18 @@ case "$1" in
         format
         ;;
     php | composer | npm)
-        exec ${@:1}
+        app_exec ${@:1}
         ;;
     vendor)
-        exec vendor/bin/${@:2}
+        app_exec vendor/bin/${@:2}
         ;;
     test)
-        exec XDEBUG_MODE=coverage php artisan ${@:1}
+        app_exec XDEBUG_MODE=coverage php artisan ${@:1}
         ;;
     artisan)
-        exec php ${@:1}
+        app_exec php ${@:1}
         ;;
     *)
-        exec php artisan ${@:1}
+        app_exec php artisan ${@:1}
         ;;
 esac
