@@ -1,9 +1,5 @@
 <template>
-    <Modal
-        v-if="impersonate"
-        @close-modal="impersonate = null"
-        class="gap-4 p-4"
-    >
+    <Modal v-if="impersonate" @close-modal="impersonate = null">
         <template #header>
             <b>Confirm</b>
         </template>

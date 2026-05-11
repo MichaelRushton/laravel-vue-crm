@@ -1,5 +1,5 @@
 <template>
-    <Modal v-if="user" @close-modal="user = null" class="gap-4 p-4">
+    <Modal v-if="user" @close-modal="user = null">
         <template #header>
             <b>{{ user.first_name }} {{ user.last_name }}</b>
         </template>
