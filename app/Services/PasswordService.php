@@ -6,5 +6,5 @@ namespace App\Services;
 
 class PasswordService
 {
-    const MIN_LENGTH = 12;
+    public const int MIN_LENGTH = 12;
 }
