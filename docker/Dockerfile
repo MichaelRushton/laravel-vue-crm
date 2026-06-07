@@ -5,7 +5,7 @@ COPY --from=node:alpine /usr/local/bin /usr/local/bin
 COPY --from=node:alpine /usr/local/lib/node_modules /usr/local/lib/node_modules
 ARG uid gid
 RUN mkdir -p /.composer /.npm /.config/psysh && chown ${uid}:${gid} /.composer /.npm /.config/psysh && \
-    apk add --no-cache postgresql-dev autoconf g++ linux-headers make && \
+    apk add --no-cache postgresql-dev postgresql-client autoconf g++ linux-headers make && \
     pie install xdebug/xdebug && \
     pie install phpredis/phpredis && \
     docker-php-ext-install pdo_pgsql pcntl && \
