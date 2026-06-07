@@ -26,7 +26,7 @@ bin/app help                # List available commands
 bin/app install             # Install the app
 bin/app start               # Start the Docker containers
 bin/app stop                # Stop the Docker containers
-bin/app dev                 # Clear cache and watch for changes
+bin/app dev                 # Start the Docker containers, clear the cache, and watch for changes
 bin/app format              # Run Prettier and Laravel Pint
 bin/app npm [command]       # Run an npm command
 bin/app php [command]       # Run a php command

@@ -9,7 +9,7 @@ help()
     echo $'\e[32minstall\e[0m             Install the app'
     echo $'\e[32mstart\e[0m               Start the Docker containers'
     echo $'\e[32mstop\e[0m                Stop the Docker containers'
-    echo $'\e[32mdev\e[0m                 Clear cache and watch for changes'
+    echo $'\e[32mdev\e[0m                 Start the Docker containers, clear the cache, and watch for changes'
     echo $'\e[32mformat\e[0m              Run Prettier and Laravel Pint'
     echo $'\e[32mnpm [command]\e[0m       Run an npm command'
     echo $'\e[32mphp [command]\e[0m       Run a php command'
@@ -82,6 +82,7 @@ stop()
 
 dev()
 {
+    start
     app_exec php artisan optimize:clear
     app_exec NODE_ENV=development npm run dev
 }
