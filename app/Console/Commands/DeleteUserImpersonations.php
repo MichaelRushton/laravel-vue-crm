@@ -15,6 +15,16 @@ class DeleteUserImpersonations extends Command
 
     public function handle()
     {
-        UserImpersonation::where('created_at', '<', $this->option('before'))->delete();
+
+        if (! $before = $this->option('before')) {
+
+            $this->error('You must provide a --before date');
+
+            return self::INVALID;
+
+        }
+
+        UserImpersonation::where('created_at', '<', $before)->delete();
+
     }
 }

@@ -15,6 +15,16 @@ class DeleteSignIns extends Command
 
     public function handle()
     {
-        SignIn::where('created_at', '<', $this->option('before'))->delete();
+
+        if (! $before = $this->option('before')) {
+
+            $this->error('You must provide a --before date');
+
+            return self::INVALID;
+
+        }
+
+        SignIn::where('created_at', '<', $before)->delete();
+
     }
 }

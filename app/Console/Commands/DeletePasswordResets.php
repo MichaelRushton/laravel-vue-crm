@@ -15,6 +15,16 @@ class DeletePasswordResets extends Command
 
     public function handle()
     {
-        PasswordReset::where('created_at', '<', $this->option('before'))->forceDelete();
+
+        if (! $before = $this->option('before')) {
+
+            $this->error('You must provide a --before date');
+
+            return self::INVALID;
+
+        }
+
+        PasswordReset::where('created_at', '<', $before)->forceDelete();
+
     }
 }
