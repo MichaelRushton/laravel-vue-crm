@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Resources\Auth;
+namespace App\Http\Resources\Users;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class EditAuthResource extends JsonResource
+class UsersEditResource extends JsonResource
 {
     public function toArray(Request $request): array
     {
@@ -16,6 +16,8 @@ class EditAuthResource extends JsonResource
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'email' => $this->email,
+            'role' => $this->role->value,
+            'status' => $this->status->value,
         ];
     }
 }

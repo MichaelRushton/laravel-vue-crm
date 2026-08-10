@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Events\User\UserImpersonated;
+use App\Events\Users\UserImpersonated;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 

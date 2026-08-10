@@ -6,7 +6,7 @@ namespace App\Http\Requests\PasswordReset;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePasswordResetRequest extends FormRequest
+class PasswordResetStoreRequest extends FormRequest
 {
     public function rules(): array
     {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Requests\User;
+namespace App\Http\Requests\Users;
 
 use App\Enums\UserRole;
 use App\Enums\UserStatus;
@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 
-class StoreUserRequest extends FormRequest
+class UsersStoreRequest extends FormRequest
 {
     public function authorize(): true
     {

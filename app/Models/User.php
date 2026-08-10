@@ -6,7 +6,7 @@ namespace App\Models;
 
 use App\Enums\UserRole;
 use App\Enums\UserStatus;
-use App\Events\User\UserSaved;
+use App\Events\Users\UserSaved;
 use App\Models\Traits\CanSearch;
 use App\Models\Traits\UpdateIfDirty;
 use Illuminate\Database\Eloquent\Builder;

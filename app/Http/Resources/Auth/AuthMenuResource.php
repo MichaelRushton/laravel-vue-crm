@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Resources\User;
+namespace App\Http\Resources\Auth;
 
 use App\Enums\MenuItem;
 use App\Enums\UserRole;
 use App\Models\User;
 use JsonSerializable;
 
-class MenuResource implements JsonSerializable
+class AuthMenuResource implements JsonSerializable
 {
     public function __construct(
         public readonly User $user

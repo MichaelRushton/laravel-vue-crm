@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Resources\User;
+namespace App\Http\Resources\Users;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ShowUserResource extends JsonResource
+class UsersShowResource extends JsonResource
 {
     public function toArray(Request $request): array
     {

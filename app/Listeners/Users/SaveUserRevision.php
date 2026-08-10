@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Listeners\User;
+namespace App\Listeners\Users;
 
-use App\Events\User\UserSaved;
+use App\Events\Users\UserSaved;
 use App\Models\UserRevision;
 use Illuminate\Support\Facades\Auth;
 

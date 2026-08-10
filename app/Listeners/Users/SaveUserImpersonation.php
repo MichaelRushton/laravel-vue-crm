@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Listeners\User;
+namespace App\Listeners\Users;
 
-use App\Events\User\UserImpersonated;
+use App\Events\Users\UserImpersonated;
 use App\Models\UserImpersonation;
 
 class SaveUserImpersonation

@@ -6,14 +6,14 @@ namespace App\Http\Controllers\ResetPassword;
 
 use App\Events\PasswordReset\PasswordResetRequested;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PasswordReset\StorePasswordResetRequest;
+use App\Http\Requests\PasswordReset\PasswordResetStoreRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Timebox;
 
 class ResetPasswordStoreController extends Controller
 {
-    public function __invoke(StorePasswordResetRequest $request): RedirectResponse
+    public function __invoke(PasswordResetStoreRequest $request): RedirectResponse
     {
 
         new Timebox()->call(function () use ($request) {

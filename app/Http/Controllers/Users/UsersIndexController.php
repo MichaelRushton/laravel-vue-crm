@@ -7,7 +7,7 @@ namespace App\Http\Controllers\Users;
 use App\Enums\UserRole;
 use App\Enums\UserStatus;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\User\UserIndexResource;
+use App\Http\Resources\Users\UsersIndexResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -20,7 +20,7 @@ class UsersIndexController extends Controller
 
         Gate::authorize('viewAny', User::class);
 
-        $users = UserIndexResource::collection(
+        $users = UsersIndexResource::collection(
             User::search($request->name, ['first_name', 'last_name'])
                 ->whereRole($role = $request->enum('role', UserRole::class))
                 ->whereStatus($status = $request->has('status') ? $request->enum('status', UserStatus::class) : UserStatus::Active)

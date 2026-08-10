@@ -7,7 +7,7 @@ namespace App\Http\Controllers\Users;
 use App\Enums\UserRole;
 use App\Enums\UserStatus;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\User\EditUserResource;
+use App\Http\Resources\Users\UsersEditResource;
 use App\Models\User;
 use App\Services\PasswordService;
 use Illuminate\Support\Facades\Gate;
@@ -21,7 +21,7 @@ class UsersEditController extends Controller
         Gate::authorize('update', $user);
 
         return inertia('Users/Edit', [
-            'user' => new EditUserResource($user),
+            'user' => new UsersEditResource($user),
             'roles' => UserRole::dropdown(),
             'statuses' => UserStatus::dropdown(),
             'password_min' => PasswordService::MIN_LENGTH,
