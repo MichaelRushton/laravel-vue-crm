@@ -12,7 +12,7 @@ Str::createRandomStringsUsing(function () {
 
 test('requires valid token', function () {
 
-    $this->get(route('reset-password.show', [
+    $this->get(route('reset-password.edit', [
         PasswordReset::factory()->create(),
         'token' => 'bad',
     ]))
@@ -26,7 +26,7 @@ test('must not be expired', function () {
 
     $this->travel(61)->minutes();
 
-    $this->get(route('reset-password.show', [
+    $this->get(route('reset-password.edit', [
         $password_reset,
         'token' => 'token',
     ]))
@@ -36,12 +36,12 @@ test('must not be expired', function () {
 
 test('view reset password page', function () {
 
-    $this->get(route('reset-password.show', [
+    $this->get(route('reset-password.edit', [
         $password_reset = PasswordReset::factory()->create(),
         'token' => 'token',
     ]))
         ->assertInertia(fn (AssertableInertia $page) => $page
-            ->component('PasswordReset/Show')
+            ->component('PasswordReset/Edit')
             ->where('uuid', $password_reset->id)
             ->where('token', 'token')
         );
