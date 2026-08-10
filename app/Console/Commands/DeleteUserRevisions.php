@@ -24,7 +24,7 @@ class DeleteUserRevisions extends Command
 
         }
 
-        UserRevision::where('created_at', '<', $before)->delete();
+        new UserRevision()->prunable($before)->delete();
 
     }
 }

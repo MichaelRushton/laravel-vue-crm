@@ -24,7 +24,7 @@ class DeleteSignIns extends Command
 
         }
 
-        SignIn::where('created_at', '<', $before)->delete();
+        new SignIn()->prunable($before)->delete();
 
     }
 }

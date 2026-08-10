@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\MassPrunable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -15,6 +17,7 @@ class PasswordReset extends Model
 {
     use HasFactory;
     use HasUuids;
+    use MassPrunable;
     use SoftDeletes;
 
     public $timestamps = false;
@@ -54,5 +57,10 @@ class PasswordReset extends Model
     public function scopeWhereNotExpired(Builder $query): Builder
     {
         return $query->where('expires_at', '>', now());
+    }
+
+    public function prunable(CarbonInterface|string|null $from = null): Builder
+    {
+        return static::where('created_at', '<', $from ?: today()->subDays(365));
     }
 }

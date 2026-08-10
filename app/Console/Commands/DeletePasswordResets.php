@@ -24,7 +24,7 @@ class DeletePasswordResets extends Command
 
         }
 
-        PasswordReset::where('created_at', '<', $before)->forceDelete();
+        new PasswordReset()->prunable($before)->forceDelete();
 
     }
 }

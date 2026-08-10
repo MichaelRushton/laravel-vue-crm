@@ -24,7 +24,7 @@ class DeleteUserImpersonations extends Command
 
         }
 
-        UserImpersonation::where('created_at', '<', $before)->delete();
+        new UserImpersonation()->prunable($before)->delete();
 
     }
 }
