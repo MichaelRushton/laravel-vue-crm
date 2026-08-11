@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\ResetPassword;
 
-use App\Events\PasswordReset\PasswordResetRequested;
+use App\Actions\PasswordReset\SendPasswordResetNotification;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PasswordReset\PasswordResetStoreRequest;
 use App\Models\User;
@@ -13,15 +13,15 @@ use Illuminate\Support\Timebox;
 
 class ResetPasswordStoreController extends Controller
 {
-    public function __invoke(PasswordResetStoreRequest $request): RedirectResponse
+    public function __invoke(PasswordResetStoreRequest $request, SendPasswordResetNotification $notification): RedirectResponse
     {
 
-        new Timebox()->call(function () use ($request) {
+        new Timebox()->call(function () use ($request, $notification) {
 
             $user = User::firstWhere('email', $request->validated('email'));
 
             if ($user && ! $user->passwordResets()->whereNotExpired()->count()) {
-                event(new PasswordResetRequested($user));
+                $notification->handle($user);
             }
 
         }, 200000);
