@@ -7,7 +7,6 @@ namespace App\Http\Requests\Users;
 use App\Enums\UserRole;
 use App\Enums\UserStatus;
 use App\Models\User;
-use App\Services\PasswordService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rule;
@@ -32,7 +31,7 @@ class UsersStoreRequest extends FormRequest
             'email' => ['required', 'email', 'max:255', 'unique:users'],
             'role' => ['required', Rule::enum(UserRole::class)],
             'status' => ['required', Rule::enum(UserStatus::class)],
-            'password' => ['required', 'string', Password::min(PasswordService::MIN_LENGTH)],
+            'password' => ['required', 'string', Password::defaults()],
         ];
     }
 

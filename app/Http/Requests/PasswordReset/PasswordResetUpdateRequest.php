@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Http\Requests\PasswordReset;
 
-use App\Services\PasswordService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
 
@@ -13,7 +12,7 @@ class PasswordResetUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'password' => ['required', 'string', Password::min(PasswordService::MIN_LENGTH)],
+            'password' => ['required', 'string', Password::defaults()],
         ];
     }
 

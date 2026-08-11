@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Http\Requests\Auth;
 
-use App\Services\PasswordService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
@@ -17,7 +16,7 @@ class AuthUpdateRequest extends FormRequest
             'first_name' => ['sometimes', 'required', 'string', 'max:255'],
             'last_name' => ['sometimes', 'required', 'string', 'max:255'],
             'email' => ['sometimes', 'required', 'email', 'max:255', Rule::unique('users')->ignore($this->user())],
-            'password' => ['sometimes', 'nullable', 'exclude_if:password,null', 'string', Password::min(PasswordService::MIN_LENGTH)],
+            'password' => ['sometimes', 'nullable', 'exclude_if:password,null', 'string', Password::defaults()],
         ];
     }
 

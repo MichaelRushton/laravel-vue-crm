@@ -6,7 +6,6 @@ namespace App\Http\Requests\Users;
 
 use App\Enums\UserRole;
 use App\Enums\UserStatus;
-use App\Services\PasswordService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rule;
@@ -31,7 +30,7 @@ class UsersUpdateRequest extends FormRequest
             'email' => ['sometimes', 'required', 'email', 'max:255', Rule::unique('users')->ignore($this->route('user'))],
             'role' => ['sometimes', 'required', Rule::enum(UserRole::class)],
             'status' => ['sometimes', 'required', Rule::enum(UserStatus::class)],
-            'password' => ['sometimes', 'nullable', 'exclude_if:password,null', 'string', Password::min(PasswordService::MIN_LENGTH)],
+            'password' => ['sometimes', 'nullable', 'exclude_if:password,null', 'string', Password::defaults()],
         ];
     }
 

@@ -9,7 +9,6 @@ use App\Enums\UserStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Users\UsersEditResource;
 use App\Models\User;
-use App\Services\PasswordService;
 use Illuminate\Support\Facades\Gate;
 use Inertia\Response;
 
@@ -24,7 +23,7 @@ class UsersEditController extends Controller
             'user' => new UsersEditResource($user),
             'roles' => UserRole::dropdown(),
             'statuses' => UserStatus::dropdown(),
-            'password_min' => PasswordService::MIN_LENGTH,
+            'password_min' => config('auth.password_validation.min'),
         ]);
 
     }

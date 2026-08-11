@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use App\Models\PasswordReset;
-use App\Services\PasswordService;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -59,7 +58,7 @@ test('validates password', function ($password) {
         ->assertInvalid(['password']);
 
 })
-    ->with(['', str_repeat('a', PasswordService::MIN_LENGTH - 1)]);
+    ->with(['', str_repeat('a', 11)]);
 
 test('resets password', function () {
 

@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use App\Models\User;
-use App\Services\PasswordService;
 use Illuminate\Support\Facades\Hash;
 
 test('must be authenticated to update user', function () {
@@ -70,7 +69,7 @@ test('validates password', function ($password) {
         ->assertInvalid(['password']);
 
 })
-    ->with([str_repeat('a', PasswordService::MIN_LENGTH - 1)]);
+    ->with([str_repeat('a', 11)]);
 
 test('update user', function () {
 
@@ -79,7 +78,7 @@ test('update user', function () {
             'first_name' => $first_name = fake()->firstName(),
             'last_name' => $last_name = fake()->lastName(),
             'email' => $email = fake()->safeEmail(),
-            'password' => $password = str_repeat('a', PasswordService::MIN_LENGTH),
+            'password' => $password = str_repeat('a', 12),
         ])
         ->assertSessionHasNoErrors()
         ->assertRedirectToRoute('auth.edit');
@@ -108,7 +107,7 @@ test('creates revision', function () {
             'first_name' => fake()->firstName(),
             'last_name' => fake()->lastName(),
             'email' => fake()->safeEmail(),
-            'password' => str_repeat('a', PasswordService::MIN_LENGTH),
+            'password' => str_repeat('a', 12),
         ]);
 
     $user->refresh();
