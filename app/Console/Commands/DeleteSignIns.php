@@ -5,15 +5,16 @@ declare(strict_types=1);
 namespace App\Console\Commands;
 
 use App\Models\SignIn;
+use Carbon\Carbon;
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
 
+#[Signature('sign-ins:delete {--before=}')]
+#[Description('Delete sign ins')]
 class DeleteSignIns extends Command
 {
-    protected $signature = 'sign-ins:delete {--before=}';
-
-    protected $description = 'Delete sign ins';
-
-    public function handle()
+    public function handle(): int
     {
 
         if (! $before = $this->option('before')) {
@@ -24,7 +25,9 @@ class DeleteSignIns extends Command
 
         }
 
-        new SignIn()->prunable($before)->delete();
+        new SignIn()->prunable(Carbon::parse($before))->delete();
+
+        return self::SUCCESS;
 
     }
 }

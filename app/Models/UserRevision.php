@@ -7,16 +7,16 @@ namespace App\Models;
 use App\Enums\UserRole;
 use App\Enums\UserStatus;
 use Carbon\CarbonInterface;
+use Illuminate\Database\Eloquent\Attributes\WithoutTimestamps;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\MassPrunable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+#[WithoutTimestamps]
 class UserRevision extends Model
 {
     use MassPrunable;
-
-    public $timestamps = false;
 
     protected $fillable = [
         'uuid',
@@ -66,7 +66,7 @@ class UserRevision extends Model
         return $this->belongsTo(User::class, 'impersonated_by');
     }
 
-    public function prunable(CarbonInterface|string|null $from = null): Builder
+    public function prunable(?CarbonInterface $from = null): Builder
     {
         return static::where('created_at', '<', $from ?: today()->subDays(365));
     }

@@ -5,15 +5,16 @@ declare(strict_types=1);
 namespace App\Console\Commands;
 
 use App\Models\PasswordReset;
+use Carbon\Carbon;
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
 
+#[Signature('password-resets:delete {--before=}')]
+#[Description('Delete password resets')]
 class DeletePasswordResets extends Command
 {
-    protected $signature = 'password-resets:delete {--before=}';
-
-    protected $description = 'Delete password resets';
-
-    public function handle()
+    public function handle(): int
     {
 
         if (! $before = $this->option('before')) {
@@ -24,7 +25,9 @@ class DeletePasswordResets extends Command
 
         }
 
-        new PasswordReset()->prunable($before)->forceDelete();
+        new PasswordReset()->prunable(Carbon::parse($before))->forceDelete();
+
+        return self::SUCCESS;
 
     }
 }

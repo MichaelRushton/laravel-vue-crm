@@ -5,15 +5,16 @@ declare(strict_types=1);
 namespace App\Console\Commands;
 
 use App\Models\UserImpersonation;
+use Carbon\Carbon;
+use Illuminate\Console\Attributes\Description;
+use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
 
+#[Signature('users:delete-impersonations {--before=}')]
+#[Description('Delete user impersonations')]
 class DeleteUserImpersonations extends Command
 {
-    protected $signature = 'users:delete-impersonations {--before=}';
-
-    protected $description = 'Delete user impersonations';
-
-    public function handle()
+    public function handle(): int
     {
 
         if (! $before = $this->option('before')) {
@@ -24,7 +25,9 @@ class DeleteUserImpersonations extends Command
 
         }
 
-        new UserImpersonation()->prunable($before)->delete();
+        new UserImpersonation()->prunable(Carbon::parse($before))->delete();
+
+        return self::SUCCESS;
 
     }
 }

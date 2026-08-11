@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Carbon\CarbonInterface;
+use Illuminate\Database\Eloquent\Attributes\WithoutTimestamps;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,14 +14,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+#[WithoutTimestamps]
 class PasswordReset extends Model
 {
     use HasFactory;
     use HasUuids;
     use MassPrunable;
     use SoftDeletes;
-
-    public $timestamps = false;
 
     protected $fillable = [
         'token',
@@ -59,7 +59,7 @@ class PasswordReset extends Model
         return $query->where('expires_at', '>', now());
     }
 
-    public function prunable(CarbonInterface|string|null $from = null): Builder
+    public function prunable(?CarbonInterface $from = null): Builder
     {
         return static::where('created_at', '<', $from ?: today()->subDays(365));
     }

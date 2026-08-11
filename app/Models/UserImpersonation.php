@@ -5,18 +5,18 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Carbon\CarbonInterface;
+use Illuminate\Database\Eloquent\Attributes\WithoutTimestamps;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\MassPrunable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+#[WithoutTimestamps]
 class UserImpersonation extends Model
 {
     use HasFactory;
     use MassPrunable;
-
-    public $timestamps = false;
 
     protected function casts(): array
     {
@@ -44,7 +44,7 @@ class UserImpersonation extends Model
         return $this->belongsTo(User::class, 'created_by');
     }
 
-    public function prunable(CarbonInterface|string|null $from = null): Builder
+    public function prunable(?CarbonInterface $from = null): Builder
     {
         return static::where('created_at', '<', $from ?: today()->subDays(365));
     }
