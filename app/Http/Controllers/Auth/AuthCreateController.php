@@ -5,14 +5,12 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Inertia\Response;
 
 class AuthCreateController extends Controller
 {
-    public function __invoke(Request $request): Response
+    public function __invoke(): Response
     {
         return inertia('Auth/Create');
-
     }
 }

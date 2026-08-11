@@ -10,8 +10,6 @@ use Illuminate\Auth\Events\Validated;
 
 class SaveSignIn
 {
-    public function __construct() {}
-
     public function handle(Validated|Failed $event): void
     {
 

@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class SaveUserRevision
 {
-    public function __construct() {}
-
     public function handle(UserSaved $event): void
     {
 
