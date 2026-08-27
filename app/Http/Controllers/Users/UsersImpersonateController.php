@@ -13,8 +13,11 @@ use Illuminate\Support\Facades\Gate;
 
 class UsersImpersonateController extends Controller
 {
-    public function __invoke(Request $request, User $user, ImpersonateUser $impersonate): RedirectResponse
-    {
+    public function __invoke(
+        Request $request,
+        User $user,
+        ImpersonateUser $impersonate
+    ): RedirectResponse {
 
         Gate::authorize('impersonate', $user);
 

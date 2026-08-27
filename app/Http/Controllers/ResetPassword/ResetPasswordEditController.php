@@ -12,8 +12,11 @@ use Inertia\Response as InertiaResponse;
 
 class ResetPasswordEditController extends Controller
 {
-    public function __invoke(Request $request, PasswordReset $password_reset, AuthPasswordReset $auth): InertiaResponse
-    {
+    public function __invoke(
+        Request $request,
+        PasswordReset $password_reset,
+        AuthPasswordReset $auth
+    ): InertiaResponse {
 
         $auth->handle($password_reset, $request->token);
 

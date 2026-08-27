@@ -12,8 +12,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class IsUserActive
 {
-    public function handle(Request $request, Closure $next): Response
-    {
+    public function handle(
+        Request $request,
+        Closure $next
+    ): Response {
 
         if ($request->user() && $request->user()->status !== UserStatus::Active) {
 

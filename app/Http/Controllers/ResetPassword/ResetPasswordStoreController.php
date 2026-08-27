@@ -13,8 +13,10 @@ use Illuminate\Support\Timebox;
 
 class ResetPasswordStoreController extends Controller
 {
-    public function __invoke(PasswordResetStoreRequest $request, SendPasswordResetNotification $notification): RedirectResponse
-    {
+    public function __invoke(
+        PasswordResetStoreRequest $request,
+        SendPasswordResetNotification $notification
+    ): RedirectResponse {
 
         new Timebox()->call(function () use ($request, $notification) {
 

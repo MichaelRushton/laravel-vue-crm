@@ -11,8 +11,10 @@ use Illuminate\Http\RedirectResponse;
 
 class UsersUpdateController extends Controller
 {
-    public function __invoke(UsersUpdateRequest $request, User $user): RedirectResponse
-    {
+    public function __invoke(
+        UsersUpdateRequest $request,
+        User $user
+    ): RedirectResponse {
 
         $user->updateIfDirty($request->validated());
 

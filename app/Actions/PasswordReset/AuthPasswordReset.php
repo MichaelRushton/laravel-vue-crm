@@ -9,8 +9,10 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthPasswordReset
 {
-    public function handle(PasswordReset $password_reset, string $token): void
-    {
+    public function handle(
+        PasswordReset $password_reset,
+        string $token
+    ): void {
 
         if (! Hash::check($token, $password_reset->token)) {
             abort(403);
